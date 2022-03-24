@@ -1,0 +1,90 @@
+		<form class="form" action="" method="post">
+      <div class="form-collect">
+        <div class="form-box">
+          <label for="">Từ sân bay</label>
+          <select name="" id="">
+              {{#each bookings}}
+            <option value="{{this.trip_details.pickup_location}}">{{this.trip_details.pickup_location}}</option>
+                {{/each}}
+          </select>
+        </div>
+        <div class="form-box">
+          <label for="">Đến khu vực, địa chỉ nhà</label>
+          <select name="" id="">
+             {{#each bookings}}
+            <option value="{{this.trip_details.dropoff_location}}">{{this.trip_details.dropoff_location}}</option>
+                {{/each}} 
+          </select>
+        </div>
+        <div class="form-box">
+          <label for="">Ngày đón</label>
+          <input type="date" />
+        </div>
+        <div class="form-box">
+          <label for="">Giờ đón</label>
+          <input type="time" />
+        </div>
+      </div>
+      <button type="submit">Tìm kiếm</button>
+      <div class="clear-both"></div>
+		</form>
+
+    {{!-- <div class="result">
+      <div class="result-item">
+        <div class="result-item__img">
+          <img src="https://hentaiz.top/images/thumb/oni-chichi-2-ep2.jpg" alt="">
+        </div>
+        <div class="result-item__content">
+          <div class="result-item__info">
+            <h3 class="result-item__title">Title</h3>
+            <p class="result-item__company">Smartans</p>
+            <div class="result-item__box">
+              <div class="result-item__customer">2 hành khách</div>
+              <div class="result-item__suit">2 hành lý</div>
+            </div>
+          </div>
+          <div class="result-item__payment">
+            <h3 class="result-item__price">2.000.000.000đ</h3>
+            <button>Chọn</button>
+          </div>
+        </div>
+      </div>
+      <div class="result-item">
+        <div class="result-item__img">
+          <img src="https://hentaiz.top/images/thumb/oni-chichi-2-ep2.jpg" alt="">
+        </div>
+        <div class="result-item__content">
+          <div class="result-item__info">
+            <h3 class="result-item__title">Title</h3>
+            <p class="result-item__company">Smartans</p>
+            <div class="result-item__box">
+              <div class="result-item__customer">2 hành khách</div>
+              <div class="result-item__suit">2 hành lý</div>
+            </div>
+          </div>
+          <div class="result-item__payment">
+            <h3 class="result-item__price">2.000.000.000đ</h3>
+            <button>Chọn</button>
+          </div>
+        </div>
+      </div>
+      <div class="result-item">
+        <div class="result-item__img">
+          <img src="https://hentaiz.top/images/thumb/oni-chichi-2-ep2.jpg" alt="">
+        </div>
+        <div class="result-item__content">
+          <div class="result-item__info">
+            <h3 class="result-item__title">Title</h3>
+            <p class="result-item__company">Smartans</p>
+            <div class="result-item__box">
+              <div class="result-item__customer">2 hành khách</div>
+              <div class="result-item__suit">2 hành lý</div>
+            </div>
+          </div>
+          <div class="result-item__payment">
+            <h3 class="result-item__price">2.000.000.000đ</h3>
+            <button>Chọn</button>
+          </div>
+        </div>
+      </div>
+    </div> --}}

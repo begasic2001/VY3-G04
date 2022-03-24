@@ -1,0 +1,93 @@
+<div class="mt-4">
+    <div class="row ml-4 text-center">
+        <table cellspacing="10px" cellpadding="5px">
+            <tr>
+                <th>STT</th>
+                <th>Nơi Đi</th>
+                <th>Nơi Đến</th>
+                <th>Ngày Đón</th>
+                <th>Giờ Đón</th>
+                <th>Số Chuyến Bay</th>
+                <th>Số Lượng Khách</th>
+                <th>Hành Lý</th>
+                <th>Loại Phương Tiện</th>
+                <th>Giá</th>
+                <th>Số Trẻ Em</th>
+                 <th>Khứ Hồi</th>
+                <th colspan="2"></th>
+            </tr>
+           
+            {{#each bookings}}
+            <tr>
+                <th>{{sum @index 1}}</th>
+                <td>{{this.trip_details.pickup_location}}</td>
+                <td>{{this.trip_details.dropoff_location}}</td>
+                <td>{{this.trip_details.pickup_date}}</td>
+                <td>{{this.trip_details.pickup_time}}</td>
+                <td>{{this.trip_details.flight_number}}</td>
+                <td>{{this.trip_details.passengers_count}}</td>
+                <td>{{this.trip_details.suitcases_count}}</td>
+                <td>{{this.vehicle.selected_vehicle}}</td>
+                <td>{{this.vehicle.price}}</td>
+                <td>{{this.options.baby_seats}}</td>
+                <div class="entry">
+                    {{#if this.trip_details.roundtrip}}
+                         <td>Có</td>
+                            {{else}}
+                          <td>Không</td>
+                    {{/if}}
+                </div>
+             
+                 <td><a href="/booking/{{this._id}}/edit">Sửa </a></td>
+                  <td><a href="" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-booking-modal">Xóa</td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+    
+</div>
+
+<!-- dialog delete -->
+<div class="modal" id="delete-booking-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa Chuyến Đi</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có muốn xóa chuyến đi</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Huy</button>
+        <button id="btn-delete-booking" type="button" class="btn btn-secondary" data-dismiss="modal">Xoa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form name="delete-booking-form" method="POST"></form>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        var bookingId
+        var deleteForm = document.forms['delete-booking-form']
+        var btnDeleteBooking = document.getElementById('btn-delete-booking')
+             $('#delete-booking-modal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) 
+  bookingId = button.data('id') 
+})
+   
+    btnDeleteBooking.onclick = function(){
+       deleteForm.action = '/booking/' + bookingId + '?_method=DELETE'
+       deleteForm.submit()
+    }
+    })
+   
+</script>
+
+
+

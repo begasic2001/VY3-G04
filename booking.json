@@ -1,0 +1,38 @@
+{
+    "trip_details": {
+        "pickup_location": "Thái Lan new",
+        "dropoff_location": "Hải Phòng",
+        "pickup_date": "21/3/2022",
+        "pickup_time": "5H45",
+        "flight_number": "QWERTT",
+        "passengers_count": 9,
+        "suitcases_count": 12
+      },
+      "vehicle": {
+        "selected_vehicle": "tàu hỏa",
+        "price": 60
+      },
+      "options": {
+        "baby_seats": 15
+      },
+      "booking_status": {
+        "received": true,
+        "scheduled": false,
+        "assigned": false,
+        "completed": false
+      },
+      "_id": "62371b6f121957fe178a9ba5",
+      "createdAt": "2022-03-20T12:17:51.659Z",
+      "updatedAt": "2022-03-21T14:32:20.637Z",
+      "slug": "-wkdPji7ii",
+      "__v": 0,
+      "assigned_to": {
+        "name": "",
+        "lastname": "",
+        "phone_number": "",
+        "vehicle_type": "",
+        "vehicle_maker": "",
+        "vehicle_model": "",
+        "plate": ""
+      }
+}
