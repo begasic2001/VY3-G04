@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const booksController = require('../app/Controller/BooksController')
+const upload = require('../app/Controller/UploadController')
 
-
-router.post('/store', booksController.store)
+router.post('/store',upload.single('image'), booksController.store)
 router.get('/create', booksController.create)
 router.get('/:id/edit', booksController.edit)
 router.put('/:id', booksController.update)

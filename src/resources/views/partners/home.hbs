@@ -3,6 +3,7 @@
         <table cellspacing="10px" cellpadding="5px">
             <tr>
                 <th>STT</th>
+                <th>Hình Ảnh</th>
                 <th>Nơi Đi</th>
                 <th>Nơi Đến</th>
                 <th>Ngày Đón</th>
@@ -20,6 +21,7 @@
             {{#each bookings}}
             <tr>
                 <th>{{sum @index 1}}</th>
+                <td><img src="images/{{this.trip_details.image}}" width="100px" height="50"></td>
                 <td>{{this.trip_details.pickup_location}}</td>
                 <td>{{this.trip_details.dropoff_location}}</td>
                 <td>{{this.trip_details.pickup_date}}</td>

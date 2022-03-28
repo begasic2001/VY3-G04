@@ -17,7 +17,8 @@ const Booking = new Schema({
         rt_dropoff_location: {type: String},
         rt_pickup_date: {type: String},
         rt_pickup_time: {type: String},       
-        rt_flight_number: {type: String}
+        rt_flight_number: {type: String},
+        image: {type:String},
     },
     vehicle: {
         selected_vehicle: {type: String, required: true},
@@ -28,7 +29,8 @@ const Booking = new Schema({
     },
     comments: {type: String},
     send_communications: {type: Boolean},
-
+  
+    slug:{type:String , slug: "trip_details.pickup_location",unique:true}
     // contact_info: {
     //     name: {type: String},
     //     email: {
@@ -58,7 +60,7 @@ const Booking = new Schema({
     //     completed: {type: Boolean}
     // },
     // assigned_to: {type: Object},
-        slug:{type:String , slug: "pickup_location" ,unique:true}
+       
   },{
       timestamps: true,
   });

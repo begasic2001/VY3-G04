@@ -1,13 +1,12 @@
 
 const Booking = require('../Model/Booking')
+const multer = require('multer')
 const { mulBookingToOject }= require('../../ultils/mongooes')
 const { BookingToOject }= require('../../ultils/mongooes')
 // const {conn, sql} = require('../../config/db/sql')
 class BooksController{
     index(req,res,next){
-
         // mongo
-        
         Booking.find({})
         .then(bookings => {     
             res.render('partners/home',{
@@ -50,7 +49,11 @@ class BooksController{
 
     //[POST] booking/store
     store(req,res,next){
-       
+    
+        
+        const file = req.file
+        // console.log(file)
+        // res.json("Upload thành công")
         const formData =req.body
     const resRoundTrip = roundtrip => formData.roundtrip ==="on"
     ? true : false
@@ -80,8 +83,8 @@ const rt_dropoff_location = roundtrip => roundtrip
                 rt_dropoff_location: rt_dropoff_location(formData.roundtrip),
                 rt_pickup_date: formData.rt_pickup_date,
                 rt_pickup_time: formData.rt_pickup_time,
-                rt_flight_number: formData.rt_flight_number
-               
+                rt_flight_number: formData.rt_flight_number,
+                image: file.filename
             },
             vehicle:{
                 selected_vehicle: formData.selected_vehicle,
@@ -108,26 +111,10 @@ const rt_dropoff_location = roundtrip => roundtrip
     }
     // [PUT] booking/:id/
     update(req,res,next){
-      
+        const file = req.file
         const formData =req.body
         const resRoundTrip = roundtrip => formData.roundtrip ==="on"
         ? true : false
-          // If the type of selected payment is Deposit calculate the 25% of the total
-    // price
-    
-    // const deposit_amount = price => formData.payment_type === "Deposit"
-    // ? Number((price * 25) / 100)
-    // : 0;
-
-// Rest the price minus the deposit and the remaining amount should be paid in
-// the vehicle.
-
-// const in_car_payment = price => {
-//     const deposit = deposit_amount(price);
-//     return deposit > 0
-//         ? Number(price - deposit)
-//         : 0;
-// }
 
 //If it is roundtrip then the return pickup location = arrival dropoff location
 const rt_pickup_location = roundtrip => roundtrip
@@ -152,8 +139,9 @@ const rt_dropoff_location = roundtrip => roundtrip
                 rt_dropoff_location: rt_dropoff_location(formData.roundtrip),
                 rt_pickup_date: formData.rt_pickup_date,
                 rt_pickup_time: formData.rt_pickup_time,
-                rt_flight_number: formData.rt_flight_number
-               
+                rt_flight_number: formData.rt_flight_number,
+                image: file.filename
+                
             },
             vehicle:{
                 selected_vehicle: formData.selected_vehicle,
@@ -162,38 +150,10 @@ const rt_dropoff_location = roundtrip => roundtrip
             options:{
                 baby_seats: formData.baby_seats,
             },
-            contact_info: {
-                name: formData.name,
-                email: formData.email,
-                phone_number: formData.phone_number,
-                country: formData.country
-            },
             comments: formData.comments,
             send_communications: formData.send_communications,
             agree_to_terms: formData.agree_to_terms,
-            // payment_details: {
-            //     payment_type: formData.payment_type,
-            //     payment_method: formData.payment_method,
-            //     discount_code: formData.discount_code,
-            //     deposit_amount: deposit_amount(formData.price),
-            //     total_price: formData.total_price,
-            //     in_car_payment: in_car_payment(formData.price)
-            // },
-            booking_status: {
-                received: true,
-                scheduled: false,
-                assigned: false,
-                completed: false
-            },
-            assigned_to: {
-                name: "",
-                lastname: "",
-                phone_number: "",
-                vehicle_type: "",
-                vehicle_maker: "",
-                vehicle_model: "",
-                plate: ""
-            }
+        
         })
             .then(() => res.redirect('/booking'))
             .catch(next)

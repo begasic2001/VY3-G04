@@ -1,10 +1,15 @@
 const mongoose = require('mongoose');
+const dotenv = require("dotenv");
+dotenv.config({path:'src/.env'});
 
 async function connect(){
     try{
-        await mongoose.connect('mongodb://localhost:27017/Booking', 
+        await mongoose.connect(process.env.MONGO
+        ,() =>{
+            console.log("Kết nối thành công")
+        }   
         );  
-        console.log("Kết nối thanh công")
+       
     }
     catch{
         console.log("Kết nối thất bại")
