@@ -18,6 +18,7 @@ const Booking = new Schema({
         rt_pickup_date: {type: String},
         rt_pickup_time: {type: String},       
         rt_flight_number: {type: String},
+        rt_return_date:{type:String},
         image: {type:String},
     },
     vehicle: {

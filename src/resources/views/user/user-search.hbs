@@ -1,29 +1,29 @@
-		<form class="form" action="" method="post">
+		<form class="form" action="/trangchu/store" method="post">
       <div class="form-collect">
         <div class="form-box">
-          <label for="">Từ sân bay</label>
-          <select name="" id="">
+          <label for="pickup_location">Từ sân bay</label>
+          <select name="pickup_location" id="pickup_location">
               {{#each bookings}}
             <option value="{{this.trip_details.pickup_location}}">{{this.trip_details.pickup_location}}</option>
                 {{/each}}
           </select>
         </div>
         <div class="form-box">
-          <label for="">Đến khu vực, địa chỉ nhà</label>
-          <select name="" id="">
+          <label for="dropoff_location">Đến khu vực, địa chỉ nhà</label>
+          <select name="dropoff_location" id="dropoff_location">
              {{#each bookings}}
             <option value="{{this.trip_details.dropoff_location}}">{{this.trip_details.dropoff_location}}</option>
                 {{/each}} 
           </select>
         </div>
-        <div class="form-box">
+        {{!-- <div class="form-box">
           <label for="">Ngày đón</label>
           <input type="date" />
         </div>
         <div class="form-box">
           <label for="">Giờ đón</label>
           <input type="time" />
-        </div>
+        </div> --}}
       </div>
       <button type="submit">Tìm kiếm</button>
       <div class="clear-both"></div>

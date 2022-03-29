@@ -13,8 +13,9 @@
                 <th>Hành Lý</th>
                 <th>Loại Phương Tiện</th>
                 <th>Giá</th>
-                <th>Số Trẻ Em</th>
+                {{!-- <th>Số Trẻ Em</th> --}}
                  <th>Khứ Hồi</th>
+                 <th>Ngày Về</th>
                 <th colspan="2"></th>
             </tr>
            
@@ -31,14 +32,19 @@
                 <td>{{this.trip_details.suitcases_count}}</td>
                 <td>{{this.vehicle.selected_vehicle}}</td>
                 <td>{{this.vehicle.price}}</td>
-                <td>{{this.options.baby_seats}}</td>
+                {{!-- <td>{{this.options.baby_seats}}</td> --}}
                 <div class="entry">
                     {{#if this.trip_details.roundtrip}}
-                         <td>Có</td>
+                         <td><input type="checkbox" checked ></td>
+                          <td>{{this.trip_details.rt_return_date}}</td>
                             {{else}}
-                          <td>Không</td>
+                              <td><input type="checkbox"></td>
+                          <td></td>
+                          
+                          
                     {{/if}}
                 </div>
+                
              
                  <td><a href="/booking/{{this._id}}/edit">Sửa </a></td>
                   <td><a href="" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-booking-modal">Xóa</td>

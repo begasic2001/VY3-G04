@@ -23,6 +23,10 @@ router.post('/dangky',usersController.create)
 router.post('/dangxuat',middlewareController.verifyToken,usersController.logout)
 
 
+// tìm kiếm chuyến đi
+router.post('/store',usersController.search)
+
+
 // trang chủ
 router.get('/',usersController.index)
 

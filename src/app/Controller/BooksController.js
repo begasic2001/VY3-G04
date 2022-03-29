@@ -59,12 +59,11 @@ class BooksController{
     ? true : false
        
 
-//If it is roundtrip then the return pickup location = arrival dropoff location
+// điểm bắt đầu bằng điểm kết thúc
 const rt_pickup_location = roundtrip => roundtrip
     ? formData.dropoff_location
     : "";
-
-//If it is roundtrip then the return dropoff location = arrival pickup location
+// điểm kết thúc bằng điểm bắt đầu
 const rt_dropoff_location = roundtrip => roundtrip
     ? formData.pickup_location
     : "";
@@ -84,6 +83,7 @@ const rt_dropoff_location = roundtrip => roundtrip
                 rt_pickup_date: formData.rt_pickup_date,
                 rt_pickup_time: formData.rt_pickup_time,
                 rt_flight_number: formData.rt_flight_number,
+                rt_return_date:formData.rt_return_date,
                 image: file.filename
             },
             vehicle:{
@@ -111,17 +111,20 @@ const rt_dropoff_location = roundtrip => roundtrip
     }
     // [PUT] booking/:id/
     update(req,res,next){
-        const file = req.file
+     
         const formData =req.body
+        const file = req.file
+        // if(!file){
+        //     file =formData.file.filename 
+        // }
         const resRoundTrip = roundtrip => formData.roundtrip ==="on"
         ? true : false
 
-//If it is roundtrip then the return pickup location = arrival dropoff location
+
 const rt_pickup_location = roundtrip => roundtrip
     ? formData.dropoff_location
     : "";
 
-//If it is roundtrip then the return dropoff location = arrival pickup location
 const rt_dropoff_location = roundtrip => roundtrip
     ? formData.pickup_location
     : "";
@@ -140,8 +143,8 @@ const rt_dropoff_location = roundtrip => roundtrip
                 rt_pickup_date: formData.rt_pickup_date,
                 rt_pickup_time: formData.rt_pickup_time,
                 rt_flight_number: formData.rt_flight_number,
-                image: file.filename
-                
+                rt_return_date:formData.rt_return_date,
+                image: file.filename    
             },
             vehicle:{
                 selected_vehicle: formData.selected_vehicle,

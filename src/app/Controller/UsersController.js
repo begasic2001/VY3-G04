@@ -17,6 +17,24 @@ class UsersController{
             }))
       
     }
+    search(req,res,next){
+        const formData = req.body
+        Booking.find({
+            pickup_location:formData.pickup_location,
+            dropoff_location:formData.dropoff_location
+        })
+        .then(result => {     
+            // res.render('partners/home',{
+                res.json(result)
+            //     bookings: mulBookingToOject(bookings)
+            // })
+        })
+        .catch(next)
+    }
+
+
+
+
 
     // lấy tất cả người dùng ( chỉ test code)
     show(req,res,next){

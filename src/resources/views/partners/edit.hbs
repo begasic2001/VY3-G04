@@ -1,6 +1,6 @@
 <div class="mt-4">
     <h3>Sửa Chuyến Đi</h3>
-    <form action="/booking/{{bookings._id}}?_method=PUT" method="post">
+    <form action="/booking/{{bookings._id}}?_method=PUT" method="post" enctype='multipart/form-data'>
   <div class="form-group">
     <label for="exampleInputEmail1">Nơi Đi*</label>
     <input type="text" class="form-control" value="{{bookings.trip_details.pickup_location}}" id="pickup_location" name="pickup_location" >
@@ -50,12 +50,21 @@
        </div>
         <div class="form-group">
     <label for="exampleInputEmail1">Hình Ảnh*</label>
-    <input type="file" class="" id="image" name="image" >
+    <input type="file" class="" value="{{bookings.trip_details.image}}" id="image" name="image">{{bookings.trip_details.image}}
   </div>
      <div class="form-group retry">
     <label for="exampleInputEmail1">Khứ Hồi*</label>
     <input type="checkbox" class="form-control" id="roundtrip" name="roundtrip" {{#if bookings.trip_details.roundtrip }}  checked {{/if}} >
   </div>
-  <button type="submit" class="btn btn-primary">Thêm chuyến đi</button>
+  
+      <div class="form-group retry">
+          
+    <label for="exampleInputEmail1">Ngày Về*</label>
+    <input type="text" class="form-control" id="rt_return_date" name="rt_return_date" value="{{ bookings.trip_details.rt_return_date }}" >
+    
+  
+  </div>
+   
+  <button type="submit" class="btn btn-primary">Cập Nhật</button>
 </form>
 </div>
