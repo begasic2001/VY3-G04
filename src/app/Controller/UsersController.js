@@ -1,10 +1,7 @@
 const User = require('../Model/user.js')
+const {conn, sql} = require('../../config/db/sql')
 const bcrypt =require("bcrypt")
-const jwt = require("jsonwebtoken")
-const Booking = require('../Model/Booking.js')
-const { mulBookingToOject }= require('../../ultils/mongooes')
-const { BookingToOject }= require('../../ultils/mongooes')
-
+// const jwt = require("jsonwebtoken")
 let refreshTokens = []
 
 class UsersController{
@@ -17,19 +14,35 @@ class UsersController{
             }))
       
     }
-    search(req,res,next){
-        const formData = req.body
-        Booking.find({
-            pickup_location:formData.pickup_location,
-            dropoff_location:formData.dropoff_location
-        })
-        .then(result => {     
-            // res.render('partners/home',{
-                res.json(result)
-            //     bookings: mulBookingToOject(bookings)
-            // })
-        })
-        .catch(next)
+    async search(req,res,next){
+    //     const formData = req.body
+    //     console.log(formData)
+    //     Booking.find({   
+    //             'trip_details.dropoff_location': formData.dropoff_location, 
+    //             'trip_details.pickup_location': formData.pickup_location   
+    //     })
+    //     .then(result => {     
+    //         // res.render('partners/home',{
+    //             res.json(result)
+    //         //     bookings: mulBookingToOject(bookings)
+    //         // })
+    //     })
+    //     .catch(next)
+    const pool =  await conn
+    const sqlString = "SELECT * FROM chuyen_di WHERE noi_di =@noi_di AND noi_den=@noi_den AND ngay_bat_dau=@ngay_bat_dau AND ngay_ket_thuc=@ngay_ket_thuc "
+    return await pool.request()
+    .input('noi_di',sql.NVarChar,req.body.noi_di)
+    .input('noi_den',sql.NVarChar,req.body.noi_den)
+    .input('ngay_bat_dau',sql.Date,req.body.ngay_bat_dau)
+    .input('ngay_ket_thuc',sql.Date,req.body.ngay_ket_thuc)
+    .query(sqlString,function(err,data){
+        if(data.recordset.length >0){
+            res.json({ressult:data})
+        }else{
+            res.json({result:"Không Tìm Thấy Chuyến Đi"})
+        }
+       
+    })
     }
 
 

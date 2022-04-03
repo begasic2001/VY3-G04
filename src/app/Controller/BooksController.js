@@ -1,104 +1,135 @@
 
-const Booking = require('../Model/Booking')
-const multer = require('multer')
-const { mulBookingToOject }= require('../../ultils/mongooes')
-const { BookingToOject }= require('../../ultils/mongooes')
-// const {conn, sql} = require('../../config/db/sql')
+// const Booking = require('../Model/Booking')
+// const { mulBookingToOject }= require('../../ultils/mongooes')
+// const { BookingToOject }= require('../../ultils/mongooes')
+const upload = require('./UploadController')
+const {conn, sql} = require('../../config/db/sql')
 class BooksController{
-    index(req,res,next){
+    async index(req,res,next){
         // mongo
-        Booking.find({})
-        .then(bookings => {     
-            res.render('partners/home',{
-                // res.json(bookings)
-                bookings: mulBookingToOject(bookings)
-            })
-        })
-        .catch(next)
-        // res.render('partners/home')
-
-        // mssql
-        // const pool =  await conn
-        // const ressult = "SELECT * FROM trip_details"
-        // return await pool.request().query(ressult,function(err,data){
+        // await Booking.find({})
+        // .then(bookings => {     
         //     res.render('partners/home',{
-        //         data : mulBookingToOject(data)
+        //         // res.json(bookings)
+        //         bookings: mulBookingToOject(bookings)
         //     })
         // })
+        // .catch(next)
+        // res.render('partners/home')
+
+        //mssql
+        const pool =  await conn
+        const sqlString = "SELECT * FROM chuyen_di "
+        return await pool.request().query(sqlString,function(err,data){
+           res.json({ressult:data.recordset})
+        })
            
          
 
     }
-    show(req,res,next){
-        Booking.findOne({slug:req.params.slug})
-        .then(bookings => {
-           //res.json(bookings)
-           res.render('partners/detail',{
-               bookings: BookingToOject(bookings)
-           })
-        })
-        .catch(next)
+    async show(req,res,next){
+        // Booking.findOne({slug:req.params.slug})
+        // .then(bookings => {
+        //    //res.json(bookings)
+        //    res.render('partners/detail',{
+        //        bookings: BookingToOject(bookings)
+        //    })
+        // })
+        // .catch(next)
         // res.send("Detail booking" + req.params.slug)
         // res.render('partners/detail')
+        const id = req.params.id;
+        const pool =  await conn
+        const sqlString = "SELECT * FROM chuyen_di WHERE ma_chuyen_di =@varid "
+        return await pool.request()
+        .input('varid',sql.Int,id)
+        .query(sqlString,function(err,data){
+            if(data.recordset.length >0){
+                res.json({ressult:data.recordset[0]})
+            }else{
+                res.json({result:null})
+            }
+           
+        })
     }
     //[GET] booking/create
-    create(req,res,next){
+     create(req,res,next){
 
         res.render('partners/create')
     }
 
     //[POST] booking/store
-    store(req,res,next){
-    
+    async store(req,res,next){
+    //mssql
+    const pool =  await conn
+    const sqlString = "INSERT INTO chuyen_di(noi_di,noi_den,ngay_bat_dau,ngay_ket_thuc,ngay_ve,gio_bat_dau,gio_ket_thuc,so_luong,hanh_ly,don_gia,hinh_anh,loai_phuong_tien) VALUES (@noi_di,@noi_den,@ngay_bat_dau,@ngay_ket_thuc,@ngay_ve,@gio_bat_dau,@gio_ket_thuc,@so_luong,@hanh_ly,@don_gia,@hinh_anh,@loai_phuong_tien)"
+    return await pool.request()
+    .input('noi_di',sql.NVarChar,req.body.noi_di)
+    .input('noi_den',sql.NVarChar,req.body.noi_den)
+    .input('ngay_bat_dau',sql.Date,req.body.ngay_bat_dau)
+    .input('ngay_ket_thuc',sql.Date,req.body.ngay_ket_thuc)
+    .input('ngay_ve',sql.Date,req.body.ngay_ve)
+    .input('gio_bat_dau',sql.Time,req.body.gio_bat_dau)
+    .input('gio_ket_thuc',sql.Time,req.body.gio_ket_thuc)
+    .input('so_luong',sql.Int,req.body.so_luong)
+    .input('hanh_ly',sql.Int,req.body.hanh_ly)
+    .input('don_gia',sql.Int,req.body.don_gia)
+    .input('hinh_anh',sql.NVarChar,req.body.hinh_anh)
+    .input('loai_phuong_tien',sql.NVarChar,req.body.loai_phuong_tien)
+    .query(sqlString,function(err,data){
+            res.json({ressult:data})
+    })
         
-        const file = req.file
-        // console.log(file)
-        // res.json("Upload thành công")
-        const formData =req.body
-    const resRoundTrip = roundtrip => formData.roundtrip ==="on"
-    ? true : false
+
+    // mongo    
+    //     const file = req.file
+    //     // console.log(file)
+    //     // res.json("Upload thành công")
+    //     const formData =req.body
+    // const resRoundTrip = roundtrip => formData.roundtrip ==="on"
+    // ? true : false
        
 
 // điểm bắt đầu bằng điểm kết thúc
-const rt_pickup_location = roundtrip => roundtrip
-    ? formData.dropoff_location
-    : "";
-// điểm kết thúc bằng điểm bắt đầu
-const rt_dropoff_location = roundtrip => roundtrip
-    ? formData.pickup_location
-    : "";
+// const rt_pickup_location = roundtrip => roundtrip
+//     ? formData.dropoff_location
+//     : "";
+// // điểm kết thúc bằng điểm bắt đầu
+// const rt_dropoff_location = roundtrip => roundtrip
+//     ? formData.pickup_location
+//     : "";
   
-        const booking = new Booking({
-            trip_details:{
-                pickup_location: formData.pickup_location,
-                dropoff_location: formData.dropoff_location,
-                pickup_date: formData.pickup_date,
-                pickup_time: formData.pickup_time,
-                flight_number: formData.flight_number,
-                passengers_count: formData.passengers_count,
-                suitcases_count: formData.suitcases_count,
-                roundtrip: resRoundTrip(formData.roundtrip),
-                rt_pickup_location: rt_pickup_location(formData.roundtrip),
-                rt_dropoff_location: rt_dropoff_location(formData.roundtrip),
-                rt_pickup_date: formData.rt_pickup_date,
-                rt_pickup_time: formData.rt_pickup_time,
-                rt_flight_number: formData.rt_flight_number,
-                rt_return_date:formData.rt_return_date,
-                image: file.filename
-            },
-            vehicle:{
-                selected_vehicle: formData.selected_vehicle,
-                price: formData.price,
-            },
-            options:{
-                baby_seats: formData.baby_seats,
-            },
-            comments: formData.comments,
-            send_communications: formData.send_communications, 
-        });
+        // const booking = new Booking({
+        //     trip_details:{
+        //         pickup_location: formData.pickup_location,
+        //         dropoff_location: formData.dropoff_location,
+        //         pickup_date: formData.pickup_date,
+        //         pickup_time: formData.pickup_time,
+        //         flight_number: formData.flight_number,
+        //         passengers_count: formData.passengers_count,
+        //         suitcases_count: formData.suitcases_count,
+        //         roundtrip: resRoundTrip(formData.roundtrip),
+        //         rt_pickup_location: rt_pickup_location(formData.roundtrip),
+        //         rt_dropoff_location: rt_dropoff_location(formData.roundtrip),
+        //         rt_pickup_date: formData.rt_pickup_date,
+        //         rt_pickup_time: formData.rt_pickup_time,
+        //         rt_flight_number: formData.rt_flight_number,
+        //         rt_return_date:formData.rt_return_date,
+        //         image: file.filename
+        //     },
+        //     vehicle:{
+        //         selected_vehicle: formData.selected_vehicle,
+        //         price: formData.price,
+        //     },
+        //     options:{
+        //         baby_seats: formData.baby_seats,
+        //     },
+        //     comments: formData.comments,
+        //     send_communications: formData.send_communications, 
+        // });
       
-        booking.save()
-        res.redirect('/booking')
+        // booking.save()
+        // res.redirect('/booking')
     }
     // [GET] booking/:id/edit
     edit(req,res,next){
@@ -110,62 +141,113 @@ const rt_dropoff_location = roundtrip => roundtrip
         // res.render('partners/edit')
     }
     // [PUT] booking/:id/
-    update(req,res,next){
-     
-        const formData =req.body
-        const file = req.file
-        // if(!file){
-        //     file =formData.file.filename 
-        // }
-        const resRoundTrip = roundtrip => formData.roundtrip ==="on"
-        ? true : false
-
-
-const rt_pickup_location = roundtrip => roundtrip
-    ? formData.dropoff_location
-    : "";
-
-const rt_dropoff_location = roundtrip => roundtrip
-    ? formData.pickup_location
-    : "";
-        Booking.findOneAndUpdate({_id:req.params.id},{
-            trip_details:{
-                pickup_location: formData.pickup_location,
-                dropoff_location: formData.dropoff_location,
-                pickup_date: formData.pickup_date,
-                pickup_time: formData.pickup_time,
-                flight_number: formData.flight_number,
-                passengers_count: formData.passengers_count,
-                suitcases_count: formData.suitcases_count,
-                roundtrip: resRoundTrip(formData.roundtrip),
-                rt_pickup_location: rt_pickup_location(formData.roundtrip),
-                rt_dropoff_location: rt_dropoff_location(formData.roundtrip),
-                rt_pickup_date: formData.rt_pickup_date,
-                rt_pickup_time: formData.rt_pickup_time,
-                rt_flight_number: formData.rt_flight_number,
-                rt_return_date:formData.rt_return_date,
-                image: file.filename    
-            },
-            vehicle:{
-                selected_vehicle: formData.selected_vehicle,
-                price: formData.price,
-            },
-            options:{
-                baby_seats: formData.baby_seats,
-            },
-            comments: formData.comments,
-            send_communications: formData.send_communications,
-            agree_to_terms: formData.agree_to_terms,
-        
+    async update(req,res,next){
+        //mssql
+        const id = req.params.id
+        const pool =  await conn
+        const sqlString = "UPDATE chuyen_di SET noi_di=@noi_di ,noi_den=@noi_den,ngay_bat_dau=@ngay_bat_dau,ngay_ket_thuc=@ngay_ket_thuc,ngay_ve=@ngay_ve,gio_bat_dau=@gio_bat_dau,gio_ket_thuc=@gio_ket_thuc,so_luong=@so_luong,hanh_ly=@hanh_ly,don_gia=@don_gia,hinh_anh=@hinh_anh,loai_phuong_tien=@loai_phuong_tien WHERE ma_chuyen_di=@ma_chuyen_di"
+        return await pool.request()
+        .input('noi_di',sql.NVarChar,req.body.noi_di)
+        .input('noi_den',sql.NVarChar,req.body.noi_den)
+        .input('ngay_bat_dau',sql.Date,req.body.ngay_bat_dau)
+        .input('ngay_ket_thuc',sql.Date,req.body.ngay_ket_thuc)
+        .input('ngay_ve',sql.Date,req.body.ngay_ve)
+        .input('gio_bat_dau',sql.Time,req.body.gio_bat_dau)
+        .input('gio_ket_thuc',sql.Time,req.body.gio_ket_thuc)
+        .input('so_luong',sql.Int,req.body.so_luong)
+        .input('hanh_ly',sql.Int,req.body.hanh_ly)
+        .input('don_gia',sql.Int,req.body.don_gia)
+        .input('hinh_anh',sql.NVarChar,req.body.hinh_anh)
+        .input('loai_phuong_tien',sql.NVarChar,req.body.loai_phuong_tien)
+        .input('ma_chuyen_di',sql.Int,id)
+        .query(sqlString,function(err,data){
+            console.log(err)
+                res.send({ressult:data})
         })
-            .then(() => res.redirect('/booking'))
-            .catch(next)
+
+        // const formData =req.body
+        // const file = req.file
+        // const resRoundTrip = roundtrip => formData.roundtrip ==="on"
+        // ? true : false
+
+       
+
+// điểm bắt đầu bằng điểm kết thúc
+// const rt_pickup_location = roundtrip => roundtrip
+//     ? formData.dropoff_location
+//     : "";
+// // điểm kết thúc bằng điểm bắt đầu
+// const rt_dropoff_location = roundtrip => roundtrip
+//     ? formData.pickup_location
+//     : "";
+
+        // const updates ={
+        //     trip_details:{
+        //         pickup_location: formData.pickup_location,
+        //         dropoff_location: formData.dropoff_location,
+        //         pickup_date: formData.pickup_date,
+        //         pickup_time: formData.pickup_time,
+        //         flight_number: formData.flight_number,
+        //         passengers_count: formData.passengers_count,
+        //         suitcases_count: formData.suitcases_count,
+        //         roundtrip: resRoundTrip(formData.roundtrip),
+        //         rt_pickup_location: rt_pickup_location(formData.roundtrip),
+        //         rt_dropoff_location: rt_dropoff_location(formData.roundtrip),
+        //         rt_pickup_date: formData.rt_pickup_date,
+        //         rt_pickup_time: formData.rt_pickup_time,
+        //         rt_flight_number: formData.rt_flight_number,
+        //         rt_return_date:formData.rt_return_date,
+                
+        //     },
+        //     vehicle:{
+        //         selected_vehicle: formData.selected_vehicle,
+        //         price: formData.price,
+        //     },
+        //     options:{
+        //         baby_seats: formData.baby_seats,
+        //     },
+        //     comments: formData.comments,
+        //     send_communications: formData.send_communications,
+        //     agree_to_terms: formData.agree_to_terms,
+        // }
+
+        // if(file){
+        //     const image = file.filename
+        //     updates.trip_details.image = image
+        // }
+
+        // Booking.findOneAndUpdate({_id:req.params.id},{
+        //    $set:updates
+        
+        // },{
+        //     new:true
+        // })
+        //     .then(() => res.redirect('/booking'))
+        //     .catch(next)
+
+
+
     }
      // [DELETE] booking/:id/
-    delete(req,res,next){
-        Booking.deleteOne({_id:req.params.id})
-            .then(() => res.redirect('back'))
-            .catch(next)
+    async delete(req,res,next){
+        // Booking.deleteOne({_id:req.params.id})
+        //     .then(() => res.redirect('back'))
+        //     .catch(next)
+        const id = req.params.id
+        const pool =  await conn
+        const sqlString = "DELETE FROM chuyen_di WHERE ma_chuyen_di =@varid "
+        return await pool.request()
+        .input('varid',sql.Int,id)
+        .query(sqlString,function(err,data){
+            if(!err){
+                res.json({ressult:"Xóa Thành Công"})
+            }else{
+                res.json({result:"Xóa Thất Bại"})
+            }
+           
+        })
+
+    
     }
 }
 module.exports = new BooksController()

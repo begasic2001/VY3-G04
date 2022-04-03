@@ -20,7 +20,7 @@ const middlewareController = {
       },
     verifyTokenAndAdminAuth : (req, res, next) => {
         middlewareController.verifyToken(req, res, () => {
-            if (req.user._id === req.params.id|| req.user.admin) {
+            if (req.user._id === req.params.id || req.user.admin) {
                 next();
             } else {
                 res.status(403).json("Bạn không xóa được!");

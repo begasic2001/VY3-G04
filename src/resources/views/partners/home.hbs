@@ -9,7 +9,7 @@
                 <th>Ngày Đón</th>
                 <th>Giờ Đón</th>
                 <th>Số Chuyến Bay</th>
-                <th>Số Lượng Khách</th>
+                <th>Số Lượng Vé</th>
                 <th>Hành Lý</th>
                 <th>Loại Phương Tiện</th>
                 <th>Giá</th>
@@ -29,9 +29,9 @@
                 <td>{{this.trip_details.pickup_time}}</td>
                 <td>{{this.trip_details.flight_number}}</td>
                 <td>{{this.trip_details.passengers_count}}</td>
-                <td>{{this.trip_details.suitcases_count}}</td>
+                <td>{{this.trip_details.suitcases_count}} kg</td>
                 <td>{{this.vehicle.selected_vehicle}}</td>
-                <td>{{this.vehicle.price}}</td>
+                <td>{{this.vehicle.price}} VND</td>
                 {{!-- <td>{{this.options.baby_seats}}</td> --}}
                 <div class="entry">
                     {{#if this.trip_details.roundtrip}}
