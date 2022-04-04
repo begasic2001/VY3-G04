@@ -21,7 +21,8 @@ class BooksController{
         const pool =  await conn
         const sqlString = "SELECT * FROM chuyen_di "
         return await pool.request().query(sqlString,function(err,data){
-           res.json({ressult:data.recordset})
+        //    res.render('partners/home',{result:data.recordset})
+        res.send({result:data.recordset})
         })
            
          
@@ -53,7 +54,7 @@ class BooksController{
         })
     }
     //[GET] booking/create
-     create(req,res,next){
+    create(req,res,next){
 
         res.render('partners/create')
     }
@@ -61,8 +62,9 @@ class BooksController{
     //[POST] booking/store
     async store(req,res,next){
     //mssql
+    // const resRoundTrip = khu_hoi => req.body.khu_hoi ==="on" ? 1 : 0 resRoundTrip(req.body.khu_hoi)
     const pool =  await conn
-    const sqlString = "INSERT INTO chuyen_di(noi_di,noi_den,ngay_bat_dau,ngay_ket_thuc,ngay_ve,gio_bat_dau,gio_ket_thuc,so_luong,hanh_ly,don_gia,hinh_anh,loai_phuong_tien) VALUES (@noi_di,@noi_den,@ngay_bat_dau,@ngay_ket_thuc,@ngay_ve,@gio_bat_dau,@gio_ket_thuc,@so_luong,@hanh_ly,@don_gia,@hinh_anh,@loai_phuong_tien)"
+    const sqlString = "INSERT INTO chuyen_di(noi_di,noi_den,ngay_bat_dau,ngay_ket_thuc,ngay_ve,gio_bat_dau,gio_ket_thuc,khu_hoi,so_luong,hanh_ly,don_gia,hinh_anh,loai_phuong_tien) VALUES (@noi_di,@noi_den,@ngay_bat_dau,@ngay_ket_thuc,@ngay_ve,@gio_bat_dau,@gio_ket_thuc,@khu_hoi,@so_luong,@hanh_ly,@don_gia,@hinh_anh,@loai_phuong_tien)"
     return await pool.request()
     .input('noi_di',sql.NVarChar,req.body.noi_di)
     .input('noi_den',sql.NVarChar,req.body.noi_den)
@@ -71,6 +73,7 @@ class BooksController{
     .input('ngay_ve',sql.Date,req.body.ngay_ve)
     .input('gio_bat_dau',sql.Time,req.body.gio_bat_dau)
     .input('gio_ket_thuc',sql.Time,req.body.gio_ket_thuc)
+    .input('khu_hoi',sql.Bit,req.body.khu_hoi)
     .input('so_luong',sql.Int,req.body.so_luong)
     .input('hanh_ly',sql.Int,req.body.hanh_ly)
     .input('don_gia',sql.Int,req.body.don_gia)
@@ -162,7 +165,7 @@ class BooksController{
         .input('ma_chuyen_di',sql.Int,id)
         .query(sqlString,function(err,data){
             console.log(err)
-                res.send({ressult:data})
+                res.json({ressult:data})
         })
 
         // const formData =req.body

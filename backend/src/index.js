@@ -6,7 +6,7 @@ const morgan = require('morgan')
 const hbs = require('express-handlebars');
 const path = require('path')
 const route = require('./router')
-const port = 3000
+const port = 9000
 const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 app.use(morgan('combined'))
@@ -19,18 +19,18 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Template engine
-// app.engine('hbs', hbs.engine(
-//   {
-//     extname: '.hbs',
-//     helpers: {
-//       sum : (a,b) => a+b ,
+app.engine('hbs', hbs.engine(
+  {
+    extname: '.hbs',
+    helpers: {
+      sum : (a,b) => a+b ,
       
-//   }
-// }
+  }
+}
   
-//   ));
-
-app.set('view engine', 'ejs');
+  ));
+app.set('view engine', 'hbs');
+// app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'resources','views'));
 // đường dẫn 
 route(app)

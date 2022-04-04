@@ -19,21 +19,16 @@
                 <th colspan="2"></th>
             </tr>
            
-            {{#each bookings}}
+            {{#each result}}
             <tr>
                 <th>{{sum @index 1}}</th>
-                <td><img src="images/{{this.trip_details.image}}" width="100px" height="50"></td>
-                <td>{{this.trip_details.pickup_location}}</td>
-                <td>{{this.trip_details.dropoff_location}}</td>
-                <td>{{this.trip_details.pickup_date}}</td>
-                <td>{{this.trip_details.pickup_time}}</td>
-                <td>{{this.trip_details.flight_number}}</td>
-                <td>{{this.trip_details.passengers_count}}</td>
-                <td>{{this.trip_details.suitcases_count}} kg</td>
-                <td>{{this.vehicle.selected_vehicle}}</td>
-                <td>{{this.vehicle.price}} VND</td>
+                <td><img src="images/{{this.image}}" width="100px" height="50"></td>
+                <td>{{this.noi_di}}</td>
+                <td>{{this.noi_den}}</td>
+                <td>{{this.ngay_bat_dau}}</td>
+                <td>{{this.ngay_ket_thuc}}</td>
                 {{!-- <td>{{this.options.baby_seats}}</td> --}}
-                <div class="entry">
+                {{!-- <div class="entry">
                     {{#if this.trip_details.roundtrip}}
                          <td><input type="checkbox" checked ></td>
                           <td>{{this.trip_details.rt_return_date}}</td>
@@ -43,11 +38,11 @@
                           
                           
                     {{/if}}
-                </div>
+                </div> --}}
                 
              
-                 <td><a href="/booking/{{this._id}}/edit">Sửa </a></td>
-                  <td><a href="" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-booking-modal">Xóa</td>
+                 <td><a href="/booking/{{this.ma_chuyen_di}}/edit">Sửa </a></td>
+                  <td><a href="" data-id="{{this.ma_chuyen_di}}" data-toggle="modal" data-target="#delete-booking-modal">Xóa</td>
             </tr>
             {{/each}}
         </table>
