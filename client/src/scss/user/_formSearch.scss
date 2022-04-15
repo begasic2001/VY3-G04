@@ -1,0 +1,72 @@
+$action-color: #FF5E1F;
+$border-radius-box: 0.8rem;
+$width-item: calc(100% / 4 - 2rem);
+
+@mixin sizeBox($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+.form-search {
+  @include sizeBox(50%, 30rem);
+  position: relative;
+  margin: -8rem auto 0;
+  padding: 3rem;
+  border-radius: $border-radius-box;
+  box-shadow: 0 0 0.8rem rgba(#000, 0.5);
+  background-color: #fff;
+  
+  &__row {
+    display: flex;
+  }
+
+  &__item {
+    flex-basis: $width-item;
+    width: $width-item;
+    & + & {
+      margin-left: 2.5rem;
+    }
+  }
+
+  &__item {
+    font-weight: bold;
+  }
+
+  &__input {
+    @include sizeBox(100%, 4rem);
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    border: solid 1px #cecece;
+    border-radius: $border-radius-box;
+    transition: 0.2s;
+    &:focus {
+      cursor: pointer;
+      border: solid 1px #9797ce;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    bottom: 25%;
+    right: 3rem;
+    padding: 1.5rem 0;
+    border: none;
+    border-radius: $border-radius-box;
+    width: $width-item;
+    background-color: $action-color;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.2s;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+
+  &__error {
+    margin-top: 1.5rem;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #f00;
+  }
+}

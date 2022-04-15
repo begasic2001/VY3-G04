@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -10,12 +11,33 @@
     "react-dom": "^18.0.0",
     "react-scripts": "5.0.0",
     "web-vitals": "^2.1.4"
+=======
+    "@hookform/resolvers": "^2.8.8",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^12.1.4",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.26.1",
+    "json-server": "^0.17.0",
+    "moment": "^2.29.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-hook-form": "^7.29.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.0",
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
+>>>>>>> a06811a (Upload V2)
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+<<<<<<< HEAD
     "eject": "react-scripts eject"
+=======
+    "eject": "react-scripts eject",
+    "json-server": "json-server --watch db.json --port 9000"
+>>>>>>> a06811a (Upload V2)
   },
   "eslintConfig": {
     "extends": [

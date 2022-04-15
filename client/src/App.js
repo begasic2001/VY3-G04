@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import logo from './logo.svg';
 import './App.css';
 
@@ -20,6 +21,12 @@ function App() {
       </header>
     </div>
   );
+=======
+import MainRoutes from './routes/MainRoutes';
+
+function App() {
+	return <MainRoutes />;
+>>>>>>> a06811a (Upload V2)
 }
 
 export default App;

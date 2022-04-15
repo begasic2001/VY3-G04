@@ -1,0 +1,29 @@
+.banner {
+  position: relative;
+  z-index: -1;
+  margin-top: 12rem;
+  padding-top: 20%;
+  background: linear-gradient(rgba(1, 148, 243, 0.5), #0194f3);
+}
+.banner__box {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  display: flex;
+  transform: translateX(-50%);
+}
+.banner__item {
+  width: 40rem;
+  height: 20rem;
+}
+.banner__item + .banner__item {
+  margin-left: 3rem;
+}
+.banner__img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.8rem;
+}
+
+/*# sourceMappingURL=_banner.css.map */

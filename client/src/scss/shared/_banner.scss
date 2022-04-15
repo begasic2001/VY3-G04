@@ -1,0 +1,38 @@
+$primary-color: #0194f3;
+$width-voucher: 40rem;
+
+@mixin sizeBox($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+.banner {
+  position: relative;
+  z-index: -1;
+  margin-top: 12rem;
+  padding-top: 20%;
+  background: linear-gradient(rgba($primary-color, 0.5), $primary-color);
+
+  &__box {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    display: flex;
+    transform: translateX(-50%);
+  }
+
+  &__item {
+    @include sizeBox($width-voucher, calc($width-voucher / 2));
+    
+    & + & {
+      margin-left: 3rem;
+    }
+  }
+  
+  &__img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.8rem;
+  }
+}

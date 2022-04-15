@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +11,31 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+=======
+:root {
+	--background-main-section: #fdd;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+	font-family: 'Montserrat', sans-serif;
+	background-color: var(--background-main-section);
+}
+
+input,
+select,
+textarea {
+	outline: none;
+	font-size: 1.8rem;
+}
+
+.wrapper {
+	font-size: 1.6rem;
+>>>>>>> a06811a (Upload V2)
 }

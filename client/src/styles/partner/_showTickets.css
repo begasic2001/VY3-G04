@@ -1,0 +1,39 @@
+.tickets {
+  width: 90%;
+  margin: 15rem auto;
+  padding: 3rem 2rem;
+  background-color: #fff;
+}
+.tickets__table {
+  width: 95%;
+  margin: 0 auto;
+  text-align: center;
+}
+.tickets__table,
+.tickets__table th,
+.tickets__table td {
+  border: solid 1px #000;
+  border-collapse: collapse;
+}
+.tickets__table th,
+.tickets__table td {
+  padding: 1rem;
+  width: 5.8823529412%;
+}
+.tickets__btn {
+  padding: 1rem;
+  border: none;
+  border-radius: 0.8rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.6rem;
+  text-decoration: none;
+}
+.tickets__btn--del {
+  background-color: #f00;
+}
+.tickets__btn--edit {
+  background-color: green;
+}
+
+/*# sourceMappingURL=_showTickets.css.map */
