@@ -3,41 +3,33 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-    "@testing-library/jest-dom": "^5.16.3",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-scripts": "5.0.0",
-    "web-vitals": "^2.1.4"
-=======
-    "@hookform/resolvers": "^2.8.8",
+    "@hookform/resolvers": "^2.8.10",
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^12.1.4",
+    "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.26.1",
-    "json-server": "^0.17.0",
-    "moment": "^2.29.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-hook-form": "^7.29.0",
+    "axios": "^0.27.2",
+    "chart.js": "^3.8.0",
+    "firebase": "^9.8.2",
+    "firebase-admin": "^10.2.0",
+    "moment": "^2.29.3",
+    "react": "^17.0.2",
+    "react-chartjs-2": "^4.1.0",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.31.3",
+    "react-icons": "^4.4.0",
+    "react-loading": "^2.0.3",
+    "react-paypal-button-v2": "^2.6.3",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.0",
+    "react-scripts": "5.0.1",
+    "sass": "^1.52.1",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
->>>>>>> a06811a (Upload V2)
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-<<<<<<< HEAD
     "eject": "react-scripts eject"
-=======
-    "eject": "react-scripts eject",
-    "json-server": "json-server --watch db.json --port 9000"
->>>>>>> a06811a (Upload V2)
   },
   "eslintConfig": {
     "extends": [

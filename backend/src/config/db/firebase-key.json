@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "airport-tranfer",
+  "private_key_id": "b2070259ddb389551be7a8df0704895afcc2fc85",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQClZUhR73ineBMg\naAlHoGh9nhKJGcpigxhrzE28a1HdoHdjRIfhNslyyb7gJ8eD+xfHjkx9fgI3OhWF\n5ZyrweEvxcGrgEh1lnm4ciX9GgmoL1Sb7+TNR6JXv8pc/pWjqK4mKLEyPoBUXEny\nUDMnRdTb5orWx79ZpnqdDxKjS2cOKPn4M5bBfPUELb8Ph9ZVKTD9AvQXLf1uJERC\njiAiIV+OocIJfiLJNaE/YB3bXmpqjuwk6VuVLL9QQEo353UDFb/fkIOl1SqgKaaQ\nGV5DBuBCXoNRVF4pSQwz2ec5uxJ2TCiOSXDaZGbf/PGaxmWZdUKPQReuEdrJmvpx\nCJb1U3oPAgMBAAECggEAOmt6bnp77wdCFj25HWQi1E/7sxJ5gm9UtmrNAGMV4Qb3\ndIg1yI5t/E4XThyu48bSgOmZye+yv6gUBx3xx1ctf47F2BpxPZt/de9XzL0gMRg6\ntfO3qOyHAqCbTVqdJ1gC3zabVChwcpvAgMbkMph/VYbqfm/CfluHzqcOyb/t8Dlm\npcsqeWfdQYhJ9WGLvltaEiwcJOvv7sDRSmEI6M2h287a8Ga+nH8OHASPdDglQsD9\n8fOyfQISYIkRSr7AgLYcgt2u7VL6p5wtglN5DVzwOCBLGc6h3MjC+Av+GZFZCFyT\nHNPItdXiSn2pQ4qdMQB+6fvnUVBQw9G9ul03RynheQKBgQDQZSb8MVxILEkhlAKb\nz+d9CkLW8slMwGP3TEfjYtmWFDLkAs9X4yL3gdmgjQxTJo4QtdsUp41lcy25Qqea\nasqdRqsHtP9YBOqgk1JLMHCbGTMRpmCYknxqzn90kkLhJTs9JlcEhUg9OPQW4fkT\nbmacZFpUcqXA+hGavTOLRlUDKQKBgQDLLYpaYZC8C4yc7uY1mxpLe/8egfJAvhw5\nCuKCYGvN88l4oOeMIWnwlAIDfj5vBSnDJ4H+cIQ5eHEEj2Uvukx7XOHnPxh0Hfio\nsuuLAnaJDS9Ha9G1SI+ThkPyV1Ha+2VnwqpUNLNSWeG8W2jsrDJueA/y2v3XZlOS\nNTk3fskydwKBgQCHAVDdRrkLBK2n9DQwbuL/7ZrZl9XzRBw/BIr583sUsCc78doT\njNGFWPj8+wOGBs84Yif43IdMtu5jO5xK/G4gr7xzNL3Lbvv1ZRuGHG6G/C9KeufP\nT+8MXpTRl0N+ilkzR1hOVG41Q2VWQbTT8szE+npOhSt+tkKbZYEz9C906QKBgCt8\njM85cKv+4NK6A0XX87HSUVFrSLl4tzuyS7bSAmDrW+TYs5Z3lGAsnZ23yI8kkMK3\nUwhtdq+CStZKBsNHYZVJ1QQUqhw4Sf95hBaVqV8+Fi94MUNWy3ws0aAt9lQjWJnz\nvVcWjIcEu97/xZ5aYNTqF6fIHWqb+SkjASMSnOeTAoGBAIUBLeHXVTNrYYMbk37H\nHrXl4AgtMT05DdueW92cFo6WWdXF06PDoiS+ky13ImJJ9FAKcX4XKbrlGSfqWoUX\nZB2oFNmSXiV1BgFRVeWj4qpwt6Y9+gaBPEPVMmVZ1VXIhUWHe2GTaqY5Kbbq5P7P\n/bS0dNHwoxM3OldFFOKkv7k3\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-155g4@airport-tranfer.iam.gserviceaccount.com",
+  "client_id": "112174536695053034484",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-155g4%40airport-tranfer.iam.gserviceaccount.com"
+}

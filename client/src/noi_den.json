@@ -1,0 +1,42 @@
+[
+  {
+    "code": "CRM",
+    "name": "Cresent mall"
+  },
+  {
+    "code": "BDT",
+    "name": "Bưu điện thành phố"
+  },
+  {
+    "code": "PNK",
+    "name": "Động quốc gia phong nha kẽ bàng"
+  },
+  {
+    "code": "DST",
+    "name": "Đầm Sen"
+  },
+  {
+    "code": "STT",
+    "name": "Suối Tiên"
+  },
+  {
+    "code": "SMD",
+    "name": "Suối Mơ"
+  },
+  {
+    "code": "TCC",
+    "name": "Khu du lịch Tràm Chim"
+  },
+  {
+    "code": "TLT",
+    "name": "Thung lũng tình yêu"
+  },
+  {
+    "code": "VHM",
+    "name": "Trung tâm Vạn Hạnh Mall"
+  },
+  {
+    "code": "AEO",
+    "name": "Trung tâm AEON"
+  }
+]

@@ -1,0 +1,203 @@
+@use '../abstracts/models' as m;
+@use '../abstracts/colors' as c;
+@use '../abstracts/partials' as p;
+
+.bill {
+	@include m.flexBox(space-between);
+	margin: 5rem auto;
+	width: 90rem;
+
+	&-sidebar {
+		flex-basis: 25%;
+		font-size: 1.6rem;
+
+		&__item {
+			@include m.flexBox(flex-start, center);
+			padding: 1rem 1.5rem;
+			border-radius: p.$border-radius;
+			transition: p.$transition;
+			& + & {
+				margin-top: 3rem;
+			}
+			&:hover {
+				cursor: pointer;
+				background-color: rgba(#fff, 0.5);
+			}
+
+			&--active {
+				background-color: c.$primary-color;
+				color: #fff;
+			}
+		}
+
+		&__txt {
+			padding-left: 1rem;
+		}
+	}
+
+	&-content {
+		flex-basis: 70%;
+
+		&__item {
+			&--no {
+				@include m.flexBox(flex-start, center);
+				padding: 2rem 2.5rem;
+				border-radius: p.$border-radius;
+				box-shadow: 0 0 1rem rgba(#000, 0.2);
+				min-height: 10rem;
+				background-color: #fff;
+			}
+
+			&--yes {
+				border-radius: p.$border-radius;
+				box-shadow: 0 0 1rem rgba(#000, 0.2);
+				min-height: 10rem;
+			}
+
+			& + & {
+				margin-top: 2rem;
+			}
+		}
+
+		&__summary {
+			@include m.flexBox(space-between);
+			border-top-left-radius: p.$border-radius;
+			border-top-right-radius: p.$border-radius;
+			padding: 1.5rem 2.5rem;
+			background-color: #ecf8ff;
+		}
+
+		&__trip {
+			padding: 1.5rem 2.5rem;
+			background-color: #d9f1ff;
+		}
+
+		&__direct {
+			@include m.flexBox(space-between, center);
+			border-bottom-left-radius: p.$border-radius;
+			border-bottom-right-radius: p.$border-radius;
+			padding: 1.5rem 2.5rem;
+			background-color: #ecf8ff;
+		}
+
+		&__numberCode {
+			display: inline-block;
+			margin-left: 1.5rem;
+		}
+
+		&__fromDes {
+			margin-left: 1rem;
+		}
+
+		&__wait {
+			padding: 0.5rem 1.5rem;
+			border-radius: 2rem;
+			background-color: #49b3e8;
+			color: #fff;
+
+			&--success {
+				background-color: c.$action-color;
+			}
+		}
+
+		&__link {
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 1.6rem;
+			&:hover {
+				opacity: p.$opacity;
+			}
+		}
+
+		&__announce {
+			padding-left: 2rem;
+		}
+
+		&__txt {
+			margin-top: 1.5rem;
+			text-align: justify;
+		}
+	}
+}
+
+.model {
+	position: fixed;
+	inset: 0;
+	background-color: rgba(#000, 0.5);
+
+	&__box {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding: 2rem;
+		max-height: 70%;
+		width: 90rem;
+		overflow-y: auto;
+		background-color: #fff;
+		&::-webkit-scrollbar-thumb {
+			border: 4px solid transparent;
+			border-radius: p.$border-radius;
+			background-color: #ccc;
+			background-clip: padding-box;
+		}
+		&::-webkit-scrollbar {
+			width: 1.5rem;
+		}
+	}
+
+	&__content {
+		padding: 2.5rem 1.5rem;
+		border: 1rem double c.$primary-color;
+	}
+
+	&__title {
+		text-align: center;
+		text-transform: uppercase;
+		color: c.$action-color;
+	}
+
+	&__group {
+		@include m.flexBox();
+		&:first-of-type {
+			margin-top: 2.5rem;
+		}
+
+		& .model__field {
+			flex-basis: 50%;
+		}
+	}
+
+	&__field {
+		margin-top: 1.5rem;
+		font-weight: bold;
+	}
+
+	&__value {
+		font-weight: normal;
+		margin-left: 1rem;
+	}
+
+	&__tableCap {
+		font-style: italic;
+		margin-top: 2.5rem;
+	}
+
+	&__table {
+		margin-top: 1rem;
+		width: 100%;
+
+		&,
+		td,
+		th {
+			border: 1px solid #000;
+			border-collapse: collapse;
+		}
+
+		& td,
+		& th {
+			text-align: center;
+			padding: 1rem 1.5rem;
+		}
+	}
+}

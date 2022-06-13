@@ -1,0 +1,17 @@
+@mixin flexBox(
+	$justify: flex-start,
+	$align: flex-start,
+	$direct: row,
+	$wrap: nowrap
+) {
+	display: flex;
+	align-items: $align;
+	justify-content: $justify;
+	flex-direction: $direct;
+	flex-wrap: $wrap;
+}
+
+@mixin sizeBox($width, $height: $width) {
+	width: $width;
+	height: $height;
+}

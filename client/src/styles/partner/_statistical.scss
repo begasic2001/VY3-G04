@@ -1,0 +1,78 @@
+@use '../abstracts/partials' as p;
+@use '../abstracts/colors' as c;
+@use '../abstracts/models' as m;
+
+.statistical {
+	margin: 12rem auto 5rem;
+	width: 90rem;
+
+	&-summary {
+		@include m.flexBox(space-between, flex-start, row, wrap);
+
+		&__item {
+			flex-basis: calc(100% / 2 - 3rem);
+			margin-top: 1.5rem;
+			padding: 1.5rem;
+			box-shadow: 0 0 0.8rem rgba(#000, 0.2);
+			background-color: #fff;
+			text-decoration: none;
+			transition: p.$transition;
+			&:hover {
+				opacity: p.$opacity;
+			}
+		}
+
+		&__title {
+			font-size: 1.6rem;
+			font-weight: bold;
+			color: #888;
+		}
+
+		&__result {
+			font-size: 4rem;
+			font-weight: bold;
+
+			&--green {
+				color: green;
+			}
+
+			&--blue {
+				color: blue;
+			}
+
+			&--orange {
+				color: orange;
+			}
+		}
+	}
+
+	&-chart {
+		@include m.sizeBox(90rem, 60rem);
+		margin-top: 2rem;
+		padding: 2rem;
+		box-shadow: 0 0 0.8rem rgba(#000, 0.2);
+		background-color: #fff;
+
+		&__btns {
+			@include m.flexBox(center);
+			margin: 5rem auto;
+			width: 100%;
+		}
+
+		&__btn {
+			padding: 1rem 1.5rem;
+			border: none;
+			background-color: rgba(c.$primary-color, p.$opacity);
+			color: #fff;
+			transition: p.$transition;
+			&:hover {
+				color: #000;
+				opacity: 0.6;
+			}
+
+			& + & {
+				margin-left: 1.5rem;
+			}
+		}
+	}
+}

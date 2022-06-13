@@ -1,0 +1,87 @@
+[
+  {
+    "code": "VCS",
+    "region": "Bà Rịa - Vũng Tàu",
+    "name": "Sân bay Côn Đảo"
+  },
+  {
+    "code": "UIH",
+    "region": "Bình Định",
+    "name": "Sân bay Phú Cát"
+  },
+  {
+    "code": "CAH",
+    "region": "Cà Mau",
+    "name": "Sân bay Cà Mau"
+  },
+  {
+    "code": "VCA",
+    "region": "Cần Thơ",
+    "name": "Sân bay Cần Thơ"
+  },
+  {
+    "code": "DAD",
+    "region": "Đà Nẵng",
+    "name": "Sân bay Đà Nẵng"
+  },
+  {
+    "code": "HPH",
+    "region": "Hải Phòng",
+    "name": "Sân bay Cát Bi"
+  },
+  {
+    "code": "HAN",
+    "region": "Hà Nội",
+    "name": "Sân bay Nội Bài"
+  },
+  {
+    "code": "SGN",
+    "region": "TPHCM",
+    "name": "Sân bay Tân Sơn Nhất"
+  },
+  {
+    "code": "CXR",
+    "region": "Khánh Hòa",
+    "name": "Sân bay Cam Ranh"
+  },
+  {
+    "code": "VKG",
+    "region": "Kiên Giang",
+    "name": "Sân bay Rạch Giá"
+  },
+  {
+    "code": "PQC",
+    "region": "Phú Quốc",
+    "name": "Sân bay Phú Quốc"
+  },
+  {
+    "code": "DLI",
+    "region": "Lâm Đồng",
+    "name": "Sân bay Liên Khương"
+  },
+  {
+    "code": "VII",
+    "region": "Vinh",
+    "name": "Sân bay Nghệ An"
+  },
+  {
+    "code": "TBB",
+    "region": "Tuy Hòa",
+    "name": "Sân bay Phú Yên"
+  },
+  {
+    "code": "VCL",
+    "region": "Quảng Nam",
+    "name": "Sân bay Chu Lai"
+  },
+  {
+    "code": "HUI",
+    "region": "Huế",
+    "name": "Sân bay Phú Bài"
+  },
+  {
+    "code": "VDO",
+    "region": "Quảng Ninh",
+    "name": "Sân bay Vân Đồn"
+  }
+]

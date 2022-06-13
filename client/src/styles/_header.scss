@@ -1,0 +1,120 @@
+@use './abstracts/models' as m;
+@use './abstracts/colors' as c;
+@use './abstracts/partials' as p;
+
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 3;
+	font-size: 1.6rem;
+	box-shadow: 0 1px 0.5rem rgba(#000, 0.5);
+
+	&__content {
+		@include m.flexBox();
+		margin: 0 auto;
+		width: 90rem;
+
+		&--top {
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+
+	&__item {
+		@include m.flexBox(flex-start, center);
+		& + & {
+			margin-left: 3rem;
+		}
+
+		&--hasSub {
+			position: relative;
+		}
+
+		&:hover .header-bot__subBox {
+			visibility: visible;
+			transform: translateY(0) scaleY(1);
+		}
+	}
+
+	&-top {
+		padding: 1rem 0;
+		height: 6rem;
+		background-color: #fff;
+
+		&__box {
+			@include m.flexBox(flex-start, center);
+		}
+
+		&__icn {
+			color: c.$primary-color;
+		}
+
+		&__label {
+			margin-left: 1rem;
+
+			&--register {
+				padding: 0.8rem 1.5rem;
+				border-radius: p.$border-radius;
+				background-color: c.$primary-color;
+				color: #fff;
+				transition: p.$transition;
+				&:hover {
+					cursor: pointer;
+					opacity: p.$opacity;
+				}
+			}
+		}
+	}
+
+	&-bot {
+		padding: 1rem 0;
+		height: 4rem;
+		background-color: c.$background-primary-color;
+
+		&__subBox {
+			visibility: hidden;
+			position: absolute;
+			top: 150%;
+			border-bottom-left-radius: p.$border-radius;
+			border-bottom-right-radius: p.$border-radius;
+			box-shadow: 0 0 0.8rem rgba(#000, 0.5);
+			min-width: 18rem;
+			background-color: #fff;
+			transform: translateY(-50%) scaleY(0);
+			transition: p.$transition;
+			&::before {
+				content: '';
+				position: absolute;
+				bottom: 100%;
+				width: 100%;
+				height: 10%;
+			}
+
+			li {
+				list-style-type: none;
+				&:hover a {
+					background-color: #ddd;
+				}
+			}
+		}
+
+		&__link {
+			text-decoration: none;
+			color: #000;
+
+			&--sub {
+				padding: 2rem;
+				display: block;
+			}
+		}
+	}
+}
+
+.slider {
+	margin-top: 10rem;
+	padding-top: 15%;
+	background: url(https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80)
+		top / cover no-repeat;
+}

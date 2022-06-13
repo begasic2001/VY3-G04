@@ -1,0 +1,148 @@
+@use '../abstracts/colors' as c;
+@use '../abstracts/partials' as p;
+@use '../abstracts/models' as m;
+
+.result {
+	margin: 5rem auto;
+	width: 50%;
+
+	&__searched {
+		border-bottom: 1px solid c.$border-color;
+	}
+
+	&__box {
+		@include m.flexBox();
+		margin: 1rem 0;
+	}
+
+	&__flex {
+		@include m.flexBox(space-between, center);
+	}
+
+	&__datetime {
+		&:last-of-type {
+			margin-left: 1.5rem;
+			padding-left: 1.5rem;
+			border-left: 1px solid c.$border-color;
+		}
+	}
+
+	&__btn {
+		margin-bottom: 1.5rem;
+		padding: 1.5rem 4rem;
+		border: none;
+		background-color: c.$primary-color;
+		color: #fff;
+		font-weight: bold;
+		transition: p.$transition;
+		&:hover {
+			cursor: pointer;
+			opacity: p.$opacity;
+		}
+	}
+
+	&__tab {
+		margin-top: 1.5rem;
+		border-top-left-radius: p.$border-radius;
+		border-top-right-radius: p.$border-radius;
+		box-shadow: 0 0 0.8rem c.$border-color;
+		height: 5rem;
+		background-color: #fff;
+	}
+
+	&__option {
+		display: inline-block;
+		line-height: 5rem;
+		padding: 0 5rem;
+		border-bottom: 2px solid transparent;
+		font-weight: 600;
+		color: #b7b7b7;
+		&--active {
+			cursor: pointer;
+			border-bottom: 2px solid c.$primary-color;
+			color: c.$primary-color;
+		}
+
+		svg {
+			margin-right: 1rem;
+		}
+	}
+
+	&-tickets {
+		margin-top: 2rem;
+
+		&__item {
+			@include m.flexBox(space-between);
+			padding: 2rem;
+			height: 18rem;
+			box-shadow: 0 0 0.8rem c.$border-color;
+			background-color: #fff;
+			& + & {
+				margin-top: 1rem;
+			}
+		}
+
+		&__left {
+			flex-basis: 25%;
+			width: 25%;
+		}
+
+		&__right {
+			@include m.flexBox(space-between, center);
+			flex-basis: 72%;
+			width: 72%;
+		}
+
+		&__img {
+			@include m.sizeBox(22rem, 15rem);
+			display: block;
+			object-fit: cover;
+		}
+
+		&__company {
+			margin-top: 1rem;
+			color: #aaa;
+		}
+
+		&__cap {
+			color: #aaa;
+
+			& + & {
+				margin-left: 1.5rem;
+			}
+
+			span {
+				margin-left: 0.5rem;
+			}
+		}
+
+		&__money,
+		&__include svg {
+			color: c.$action-color;
+		}
+
+		&__include {
+			margin-top: 1rem;
+
+			span {
+				margin-left: 0.5rem;
+			}
+		}
+
+		&__select {
+			margin-top: 1.5rem;
+			padding: 0.8rem 0;
+			border: none;
+			border-radius: p.$border-radius;
+			width: 100%;
+			background-color: c.$action-color;
+			color: #fff;
+			font-weight: bold;
+			transition: p.$transition;
+			&:hover {
+				cursor: pointer;
+				opacity: 0.8;
+			}
+		}
+	}
+}

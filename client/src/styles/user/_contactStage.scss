@@ -1,0 +1,141 @@
+@use '../abstracts/models' as m;
+@use '../abstracts/colors' as c;
+@use '../abstracts/partials' as p;
+
+.contact {
+	display: flex;
+	margin: 15rem auto 5rem;
+	width: 90rem;
+
+	&-sidebar {
+		$height-item: 4rem;
+		flex-basis: 25%;
+		border-right: 1px dashed #000;
+		height: 100%;
+
+		&__box {
+			height: $height-item;
+			line-height: $height-item;
+			& + & {
+				margin-top: 4rem;
+			}
+
+			&--disabled {
+				opacity: 0.5;
+				&::before {
+					content: '';
+				}
+			}
+		}
+
+		&__step {
+			position: relative;
+			color: #fff;
+			font-size: 1.8rem;
+			font-weight: bold;
+			&::after {
+				@include m.sizeBox($height-item);
+				content: '';
+				position: absolute;
+				right: 50%;
+				z-index: -1;
+				transform: translateX(50%);
+				border-radius: 50%;
+				background-color: #8c8cc2;
+			}
+		}
+
+		&__desc {
+			position: relative;
+			margin-left: 3rem;
+			&:hover {
+				cursor: pointer;
+				color: #fff;
+			}
+
+			&::before {
+				@include m.sizeBox(0, $height-item);
+				content: '';
+				visibility: hidden;
+				position: absolute;
+				right: 130%;
+				z-index: -1;
+				transform: translateX(100%);
+				background-color: #8c8cc2;
+				transition: 0.3s;
+			}
+			&:hover::before {
+				visibility: visible;
+				width: 20rem;
+			}
+
+			&--active {
+				color: #fff;
+				&::after {
+					content: '';
+					@include m.sizeBox(20rem, $height-item);
+					position: absolute;
+					right: 130%;
+					z-index: -1;
+					transform: translateX(100%);
+					visibility: visible;
+					background-color: #8c8cc2;
+				}
+			}
+		}
+	}
+
+	&-input {
+		flex-basis: 75%;
+	}
+
+	&-form {
+		margin: 0 auto;
+		width: 80%;
+
+		&__box {
+			padding: 2rem 3rem 4rem;
+			box-shadow: 0 0 0.8rem rgba(#000, 0.2);
+			background-color: #fff;
+			& + & {
+				margin-top: 4rem;
+			}
+		}
+
+		&__title {
+			text-align: center;
+			margin-bottom: 1.5rem;
+		}
+
+		&__item {
+			margin-top: 2rem;
+		}
+
+		&__label {
+			font-weight: bold;
+		}
+
+		&__input {
+			@include m.sizeBox(100%, 4rem);
+			margin-top: 1rem;
+			padding: 1rem 1.5rem;
+			border: 1px solid c.$border-color;
+			border-radius: p.$border-radius;
+		}
+
+		&__submit {
+			margin-top: 2rem;
+			padding: 1.5rem 0;
+			border: none;
+			border-radius: p.$border-radius;
+			width: 100%;
+			background-color: c.$action-color;
+			color: #fff;
+			font-weight: bold;
+			transition: 0.2s;
+			&:hover {
+				opacity: p.$opacity;
+			}
+		}
+	}
+}

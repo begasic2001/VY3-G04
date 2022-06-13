@@ -1,0 +1,109 @@
+@use '../abstracts/partials' as p;
+@use '../abstracts/colors' as c;
+@use '../abstracts/models' as m;
+
+.manage {
+	margin: 15rem auto 5rem;
+	padding: 2rem;
+	width: 90%;
+	border-radius: p.$border-radius;
+	box-shadow: 0 0 0.8rem c.$border-color;
+	background-color: #fff;
+
+	& + & {
+		margin-top: 2rem;
+	}
+
+	&__textCenter {
+		margin: 1rem 0;
+		text-align: center;
+	}
+
+	&__table {
+		margin: 8rem 0 5rem;
+		width: 100%;
+		text-align: center;
+		overflow: hidden;
+
+		&--booked {
+			margin-top: 5rem;
+		}
+
+		&,
+		& th,
+		& td {
+			border-collapse: collapse;
+			border-bottom: 1px solid #000;
+		}
+
+		& th,
+		& td {
+			padding: 1rem;
+		}
+	}
+
+	&__click {
+		font-weight: bold;
+		color: #3737cf;
+		text-decoration: underline #3737cf solid;
+	}
+
+	&__image {
+		@include m.sizeBox(20rem, 10rem);
+	}
+
+	&__img {
+		@include m.sizeBox(100%);
+		display: block;
+		object-fit: cover;
+	}
+
+	&__create {
+		float: right;
+		width: 10rem;
+		padding: 1.5rem 0;
+		background-color: c.$border-color;
+		border: none;
+		border-radius: p.$border-radius;
+		font-weight: bold;
+		transition: 0.2s;
+		&:hover {
+			background-color: c.$primary-color;
+			color: #fff;
+		}
+	}
+
+	&__btn {
+		padding: 1rem 1.5rem;
+		border: none;
+		background-color: transparent;
+		transition: 0.2s;
+		&:hover {
+			cursor: pointer;
+			opacity: 0.8;
+		}
+
+		&--edit {
+			color: c.$edit-color;
+			font-size: 2rem;
+		}
+
+		&--delete {
+			color: c.$delete-color;
+			font-size: 2rem;
+		}
+	}
+
+	&__col {
+		@for $colValue from 2 through 15 {
+			&--#{$colValue} {
+				width: calc(100% / $colValue);
+			}
+		}
+	}
+
+	a {
+		color: #fff;
+		text-decoration: none;
+	}
+}

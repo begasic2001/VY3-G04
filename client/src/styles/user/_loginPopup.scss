@@ -1,0 +1,57 @@
+@use '../abstracts/colors' as c;
+@use '../abstracts/models' as m;
+@use '../abstracts/partials' as p;
+
+.loginPopup {
+	position: absolute;
+	top: 6rem;
+	right: 22%;
+	z-index: 3;
+	width: 30rem;
+	box-shadow: 0 0 0.8rem #aaa;
+	background-color: #fff;
+	transition: 0.3s;
+
+	&__box {
+		padding: 2rem;
+	}
+
+	&-form {
+		&__item {
+			margin-top: 3rem;
+		}
+
+		&__input {
+			@include m.sizeBox(100%, 3.5rem);
+			padding: 0.5rem 1rem;
+			margin-top: 0.5rem;
+			border: 1px solid c.$border-color;
+			border-radius: p.$border-radius;
+			transition: 0.2s;
+			&:focus {
+				border: 1px solid c.$primary-color;
+			}
+		}
+
+		&__btn {
+			margin-top: 2.5rem;
+			padding: 1rem 0;
+			border: none;
+			border-radius: p.$border-radius;
+			width: 100%;
+			background-color: c.$action-color;
+			color: #fff;
+			transition: p.$transition;
+			&:hover {
+				cursor: pointer;
+				opacity: p.$opacity;
+			}
+		}
+	}
+
+	&__link {
+		margin-top: 1rem;
+		padding: 2rem;
+		background-color: c.$background-primary-color;
+	}
+}

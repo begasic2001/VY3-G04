@@ -1,32 +1,14 @@
-<<<<<<< HEAD
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import UserRoute from './routes/user';
+import PartnerRoute from './routes/partner';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-=======
-import MainRoutes from './routes/MainRoutes';
-
-function App() {
-	return <MainRoutes />;
->>>>>>> a06811a (Upload V2)
+	return (
+		<Routes>
+			<Route path="*" element={<UserRoute />} />
+			<Route path="/partner/*" element={<PartnerRoute />} />
+		</Routes>
+	);
 }
 
 export default App;

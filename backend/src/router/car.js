@@ -1,13 +1,17 @@
-const express = require('express')
-const router = express.Router()
-const CarsController = require('../app/Controller/CarsController')
-const upload = require('../app/Controller/UploadController')
+const express = require("express");
+const router = express.Router();
+const CarsController = require("../app/Controller/CarsController");
+// const multer = require('multer')
+// const Multer = multer({
+//    storage:multer.memoryStorage(),
+//    limits:1024*1024
+//   })
+// const uploadImage = require('../config/db/firebase.js')
+router.get("/getallcar", CarsController.getAllCar);
+router.get("/getCar/:id", CarsController.show);
+router.delete("/deleteCar/:id", CarsController.deleteCar);
+router.post("/createCar", CarsController.createCar); //,Multer.single('hinh_anh'),uploadImage
+router.put("/updateCar/:id", CarsController.updateCar); //,Multer.single('hinh_anh'),uploadImage
+router.get("/index", CarsController.index);
 
-router.get('/getallcar', CarsController.getAllCar);
-router.get('/getCar/:id', CarsController.show);
-router.delete('/deleteCar/:id', CarsController.deleteCar)
-router.post('/createCar',upload.single('hinh_anh'), CarsController.createCar);
-router.put('/updateCar/:id',upload.single('hinh_anh'), CarsController.updateCar)
-
-
-module.exports = router
+module.exports = router;

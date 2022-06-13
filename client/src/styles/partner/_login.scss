@@ -1,0 +1,73 @@
+@use '../abstracts/models' as m;
+@use '../abstracts/partials' as p;
+@use '../abstracts/colors' as c;
+
+.partner {
+  margin: 18rem auto;
+  width: 50rem;
+
+  &__title {
+    text-align: center;
+  }
+
+  &-form {
+    padding: 3rem 2rem;
+    box-shadow: 0 0 1rem rgba(#000, 0.2);
+    background-color: #fff;
+
+    &__title {
+      padding: 2rem 0;
+      font-size: 2rem;
+      font-weight: bold;
+
+      &--second {
+        margin-top: 5rem;
+        border-top: 1px solid c.$border-color;
+      }
+    }
+
+    &__box {
+      @include m.flexBox(space-between);
+    }
+
+    &__item {
+      margin-top: 1.5rem;
+
+      &--3 {
+        flex-basis: 30%;
+      }
+
+      &--6 {
+        flex-basis: 60%;
+      }
+    }
+
+    &__label {
+      font-weight: bold;
+    }
+
+    &__input {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border-radius: p.$border-radius;
+      border: 1px solid c.$border-color;
+    }
+
+    &__submit {
+      margin-top: 3.5rem;
+      padding: 1rem 0;
+      border: none;
+      border-radius: p.$border-radius;
+      width: 100%;
+      background-color: c.$action-color;
+      color: #fff;
+      font-weight: bold;
+      transition: p.$transition;
+      &:hover {
+        cursor: pointer;
+        opacity: p.$opacity;
+      }
+    }
+  }
+}

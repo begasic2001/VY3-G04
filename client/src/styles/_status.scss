@@ -1,0 +1,45 @@
+@use './abstracts/colors' as c;
+@use './abstracts/models' as m;
+
+.loadingIcon {
+	@include m.flexBox(flex-start, center);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	&__txt {
+		font-size: 1.8rem;
+		font-weight: bold;
+	}
+
+	&__icn {
+		@include m.sizeBox(5rem !important);
+		margin-left: 1.5rem;
+		fill: c.$primary-color !important;
+	}
+}
+
+.emptyIcon {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	display: inline-block;
+
+	&--admin {
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	&__img {
+		display: block;
+		margin: 0 auto;
+		width: 60%;
+	}
+
+	&__txt {
+		margin-top: 1rem;
+		font-weight: bold;
+	}
+} 

@@ -1,0 +1,18 @@
+.confirm {
+  margin: 25rem auto;
+  width: 90rem;
+  text-align: center;
+
+  &--extentsion {
+    margin-top: 10rem;
+  }
+
+  &__txt, &__desc {
+    margin-top: 2rem;
+  }
+
+  &__event {
+    text-decoration: underline #4646b8 solid;
+    color: #4646b8;
+  }
+}

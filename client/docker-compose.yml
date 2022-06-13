@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  react-frontend:
+    container_name: load-balance-fe
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ".:/app"
+      - "/app/node_modules"
+    ports:
+      - "3001:80"
+    environment:
+      - NODE_ENV=development

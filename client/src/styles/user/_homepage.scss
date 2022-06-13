@@ -1,0 +1,64 @@
+@use '../abstracts/colors' as c;
+@use '../abstracts/models' as m;
+@use '../abstracts/partials' as p;
+
+.search {
+	@include m.sizeBox(90rem, 25rem);
+	margin: -5rem auto;
+	border-radius: p.$border-radius;
+	box-shadow: 0 0 0.8rem rgba(#000, 0.5);
+	background-color: #fff;
+
+	&--result {
+		margin: 1rem auto 1.5rem;
+	}
+
+	&-form {
+		padding: 2rem;
+
+		&__box {
+			@include m.flexBox();
+		}
+
+		&__item {
+			position: relative;
+			flex-basis: calc(100% / 4);
+			width: calc(100% / 4);
+			& + & {
+				margin-left: 2rem;
+			}
+		}
+
+		&__label {
+			font-weight: bold;
+		}
+
+		&__input {
+			@include m.sizeBox(100%, 4rem);
+			margin-top: 1rem;
+			padding: 0.5rem 1.5rem;
+			border: solid 1px c.$border-color;
+			border-radius: p.$border-radius;
+			transition: p.$transition;
+			&:focus {
+				border: solid 1px c.$primary-color;
+			}
+		}
+
+		&__btn {
+			float: right;
+			margin-top: 4rem;
+			padding: 1rem 0;
+			width: 20%;
+			border: none;
+			border-radius: p.$border-radius;
+			background-color: c.$action-color;
+			color: #fff;
+			transition: p.$transition;
+			&:hover {
+				cursor: pointer;
+				opacity: 0.8;
+			}
+		}
+	}
+}

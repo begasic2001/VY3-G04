@@ -1,0 +1,100 @@
+@use '../abstracts/models' as m;
+@use '../abstracts/colors' as c;
+@use '../abstracts/partials' as p;
+
+.ready {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(#000, 0.5);
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    border-radius: p.$border-radius;
+    box-shadow: 0 0 0.8rem rgba(#000, 0.5);
+    background-color: #fff;
+  
+  }
+
+	&-trip {
+		padding: 1.5rem 2rem 1rem;
+		border-bottom: 1px solid #ccc;
+
+		&__model,
+		&__comp,
+		&__des {
+			margin-top: 1rem;
+		}
+
+		&__model {
+			color: #ccc;
+			font-weight: bold;
+		}
+
+		&__des {
+			font-weight: bold;
+		}
+	}
+
+	&-form {
+		&__item {
+      background-color: #bbb;
+			padding: 1.5rem 2rem 10rem;
+		}
+
+    &__label {
+      display: block;
+      font-weight: bold;
+    }
+
+    &__input {
+      margin-top: 1rem;
+      padding: 0.5rem 1.5rem;
+      width: 30%;
+    }
+
+    &__confirm {
+      @include m.flexBox();
+      padding: 1.5rem 2rem 2.5rem;
+    }
+
+    &__summary {
+      padding-right: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 80%;
+      flex-basis: 80%;
+    }
+
+    &__price {
+      margin-top: 0.5rem;
+      font-size: 3rem;
+    }
+    
+    &__desc {
+      margin-top: 0.5rem;
+      color: #bbb;
+      font-style: italic;
+    }
+
+    &__submit {
+      transform: translateY(50%);
+      flex-basis: 20%;
+      padding: 1rem 1.5rem;
+      border: none;
+      border-radius: p.$border-radius;
+      width: 20%;
+      background-color: c.$action-color;
+      color: #fff;
+      font-weight: bold;
+      transition: 0.2s;
+      &:hover {
+        opacity: p.$opacity;
+      }
+    }
+	}
+}

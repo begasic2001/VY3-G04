@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {{#each data}}
+      tenTX
+      <input
+        type="text"
+        value="{{this.tenTX}}"
+        id="name"
+        name="name"
+      />{{data.tenTX}}<br />
+      tenCT<input
+        type="text"
+        value="{{this.tenCT}}"
+        id="tencongty"
+        name="tencongty"
+      />{{data.tenCT}}
+      <br />
+      danh sach cong ty <select name="idCongTy" id="idCongTy">
+
+          <option value="{{this.ma_cong_ty}}">{{this.tenCT}}</option>
+      </select>
+    {{/each}}
+    {{! <input type="file" id="files" name="file[]" multiple="multiple" />
+    <input type="text" value="" id="img" name="img" />
+    <input type="submit" id="submit" value="nan ni bam giup" onclick="a()" /> }}
+  </body>
+  <script
+    src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"
+  ></script>
+  <script
+    src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"
+  ></script>
+  <script>
+
+    let firebaseConfig = { apiKey: "AIzaSyA3PlzMqzcD4oE0St2VWrxVHfj1UPmNWEs",
+    authDomain: "airport-tranfer.firebaseapp.com", projectId: "airport-tranfer",
+    storageBucket: "airport-tranfer.appspot.com", messagingSenderId:
+    "364995782555", appId: "1:364995782555:web:cb7c6f23afdee26faa233e",
+    measurementId: "G-EG2ME1RYR8" }; firebase.initializeApp(firebaseConfig); var
+    a = () => { var storage = firebase.storage(); var ref = storage.ref(); const
+    files = document.querySelectorAll("#files"); for (let i = 0; i <
+    files[0].files.length; i++) { let file = files[0].files[i]; const metadata =
+    { contentType: file.type } const task = ref.child(file.name).put(file,
+    metadata); task.then(snapshot => snapshot.ref.getDownloadURL()) .then(url =>
+    { console.log(url); document.querySelector("#img").value = url }) } }
+
+  </script>
+</html>
